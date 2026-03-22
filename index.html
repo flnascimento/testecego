@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste Cego IA vs REAL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <img src="images/reaperbr.jpg" alt="Logo Ceifador" class="logo-topo">
+
+  <div id="user-info-display" class="user-info hidden">
+    ID: <span id="display-v1"></span> | Jogador: <span id="display-v2"></span>
+  </div>
+
+  <div class="container">
+    <h1>Teste Cego IA vs REAL</h1>
+
+    <div id="home">
+      <div class="input-group">
+        <label for="playerName">Seu Nome</label>
+        <input type="text" id="playerName" placeholder="Digite seu nome" autocomplete="off">
+      </div>
+      
+      <div class="input-group">
+        <label for="numSongs" id="labelNumSongs">Músicas por Rodada</label>
+        <input type="number" id="numSongs" min="1" max="50" value="10">
+      </div>
+
+      <div class="home-buttons">
+        <button id="btnStartNew" onclick="startNew()">Começar Novo Jogo</button>
+        <button id="btnContinueGame" onclick="continueGame()" class="hidden">Continuar Jogo Salvo</button>
+      </div>
+    </div>
+
+    <div id="game" class="hidden">
+      <div id="progress">Teste 1/10</div>
+
+      <div id="bar">
+        <div id="bar-fill"></div>
+      </div>
+
+      <div id="fileName"></div>
+
+      <audio id="player" controls></audio>
+
+      <div class="buttons">
+        <button id="btnIA">IA</button>
+        <button id="btnREAL">REAL</button>
+      </div>
+
+    </div>
+
+    <div id="result" class="hidden"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
