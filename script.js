@@ -224,6 +224,9 @@ function mostrarFinal() {
   gameDiv.classList.add("hidden");
   resultDiv.classList.remove("hidden");
 
+  // Deleta o save imediatamente para impedir que o jogador trapaceie
+  localStorage.removeItem("testeIA_ultra");
+
   let html = `<div class="player-name-result">${V2}, essas são as</div>`;
   html += `<div class="score-main">🎯 Respostas</div>`;
 
