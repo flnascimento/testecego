@@ -6,6 +6,9 @@ let V4 = ""; // Hora
 let V5 = ""; // Nome da Rodada
 let V6 = ""; // Acerto da Rodada
 let V7 = ""; // Percentagem
+let V8 = ""; // Nomes das músicas
+let V9 = ""; // Gabarito
+let V10 = ""; // Respostas do usuário
 
 let lista = [];
 let selecionadas = [];
@@ -179,10 +182,15 @@ function finalizarRodada() {
 
   const perc = Math.round((acertos / TOTAL) * 100);
   
-  // Atribuição de variáveis V5 a V7
+  // Atribuição de variáveis V5 a V10
   V5 = "Rodada " + rodada;
   V6 = acertos + "/" + TOTAL;
   V7 = perc + "%";
+  
+  // Mapeia os dados e junta tudo com ";"
+  V8 = selecionadas.map(item => item.file).join(";");
+  V9 = selecionadas.map(item => descobrirTipo(item) === "REAL" ? "R" : "A").join(";");
+  V10 = respostas.map(r => r === "A" ? "R" : "A").join(";");
 
   historico.push({ rodada, acertos, perc });
   save();
@@ -273,7 +281,7 @@ btnREAL.onclick = () => responder("A");
 
 
 function enviarDadosPlanilha() {
-  const url = "https://script.google.com/macros/s/AKfycbxWA8Yoq4hnmRQYoA6zrV_fof-B9hrrlxExvS01FINuA7a0sZ6dsOBCKzIz6qt58Bmt/exec";
+  const url = "https://script.google.com/macros/s/AKfycbx4sZ3GtPbrT7WON9l5lxL7k5rnGDpt0YCFrqBheKSuYhOXp15gMErDgIeEeANTPi4o/exec";
   
   fetch(url, {
     method: "POST",
@@ -281,6 +289,6 @@ function enviarDadosPlanilha() {
     headers: {
       "Content-Type": "text/plain;charset=utf-8"
     },
-    body: JSON.stringify({ V1, V2, V3, V4, V5, V6, V7 })
+    body: JSON.stringify({ V1, V2, V3, V4, V5, V6, V7, V8, V9, V10 })
   }).catch(err => console.error("Erro ao enviar: ", err));
 }
