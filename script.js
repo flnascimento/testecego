@@ -187,8 +187,8 @@ function finalizarRodada() {
   V6 = acertos + "/" + TOTAL;
   V7 = perc + "%";
   
-  // Mapeia os dados e junta tudo com ";"
-  V8 = selecionadas.map(item => item.file).join(";");
+  // Mapeia os dados, remove o .mp3 e junta tudo com ";"
+  V8 = selecionadas.map(item => item.file.replace(/\.mp3$/i, "")).join(";");
   V9 = selecionadas.map(item => descobrirTipo(item) === "REAL" ? "R" : "A").join(";");
   V10 = respostas.map(r => r === "A" ? "R" : "A").join(";");
 
