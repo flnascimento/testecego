@@ -174,6 +174,9 @@ function descobrirTipo(item) {
 }
 
 function finalizarRodada() {
+  // Para a música imediatamente ao calcular os resultados
+  player.pause();
+  
   let acertos = 0;
   respostas.forEach((r, i) => {
     const tentativa = hash(selecionadas[i].file + SECRET + r);
